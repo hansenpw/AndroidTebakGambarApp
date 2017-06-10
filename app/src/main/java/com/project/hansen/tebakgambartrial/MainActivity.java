@@ -21,16 +21,16 @@ public class MainActivity extends AppCompatActivity {
     TextView skor;
     int j, k;
     SharedPreferences saveskor;
-    int currentscore=0;
+    int currentscore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        gambar = (ImageView)findViewById(R.id.gambar);
-        teks = (EditText)findViewById(R.id.teks);
-        jawab = (Button)findViewById(R.id.jawab);
-        skor = (TextView)findViewById(R.id.skor);
+        gambar = (ImageView) findViewById(R.id.gambar);
+        teks = (EditText) findViewById(R.id.teks);
+        jawab = (Button) findViewById(R.id.jawab);
+        skor = (TextView) findViewById(R.id.skor);
         saveskor = getSharedPreferences("saveskor", 0);
         final int score = saveskor.getInt("score", 0);
         skor.setText("Highscore: " + score);
@@ -40,30 +40,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String input = teks.getText().toString();
-                if(input.equals(jawaban)){
+                if (input.equalsIgnoreCase(jawaban)) {
                     Toast.makeText(MainActivity.this, "Jawaban anda benar YEAY!!!", Toast.LENGTH_LONG).show();
-                    while (k==j) {
+                    while (k == j) {
                         j = CreateQuestion();
                     }
                     currentscore++;
-                    if(currentscore>saveskor.getInt("score", 0)){
+                    if (currentscore > saveskor.getInt("score", 0)) {
                         SharedPreferences.Editor editor = saveskor.edit();
                         editor.putInt("score", currentscore);
                         editor.commit();
                         skor.setText("Highscore: " + currentscore);
                     }
-                }
-                else{
+                } else {
                     Toast.makeText(MainActivity.this, "Jawaban anda salah. Coba Lagi!!!", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    public int CreateQuestion(){
+    public int CreateQuestion() {
         Random random = new Random();
         int i = random.nextInt(3);
-        switch (i){
+        teks.setText("");
+        switch (i) {
             case 0:
                 gambar.setImageResource(R.drawable.a);
                 jawaban = "idrive";
