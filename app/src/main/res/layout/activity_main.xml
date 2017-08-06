@@ -10,36 +10,37 @@
     tools:context="com.project.hansen.tebakgambartrial.MainActivity">
 
     <ImageView
+        android:id="@+id/gambar"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/gambar"/>
+        android:contentDescription="@string/image_desc" />
 
     <EditText
+        android:id="@+id/teks"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/gambar"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:hint="Ketik Jawaban Anda"
-        android:id="@+id/teks"/>
+        android:hint="@string/text_hint" />
 
     <Button
+        android:id="@+id/jawab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/teks"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Jawab"
-        android:textSize="20sp"
-        android:id="@+id/jawab"/>
+        android:text="@string/jawab" />
 
     <TextView
+        android:id="@+id/skor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
         android:layout_below="@id/jawab"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/skor"/>
+        android:layout_marginTop="5dp" />
+
 </RelativeLayout>
